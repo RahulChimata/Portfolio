@@ -196,8 +196,8 @@ export default function Home() {
         <div className="hero-copy" id="main-content">
           <p className="eyebrow hero-eyebrow">{data.profile.eyebrow}</p>
           <h1>
-            Designing systems that move ideas into the{" "}
-            <span>real world.</span>
+            {data.profile.headline}{" "}
+            <span>{data.profile.headlineAccent}</span>
           </h1>
           <p className="hero-intro">{data.profile.introduction}</p>
           <div className="hero-actions">
@@ -232,26 +232,22 @@ export default function Home() {
           </div>
           <div className="about-grid">
             <p className="about-lead">
-              I like hard problems with physical consequences—the kind that
-              reward careful thinking, honest testing, and a willingness to
-              rebuild.
+              I build at the intersection of robotics, artificial intelligence,
+              infrastructure software, and embedded systems.
             </p>
             <div className="about-copy">
               <p>
-                My work moves between concept sketches, analytical models,
-                prototypes, and code. I care about why a design works, not only
-                whether it works once.
+                My work spans enterprise retrieval at IBM, AI-powered tools for
+                protection and control engineering at Mortenson, and research
+                in robotics vision and natural language processing at the
+                University of Minnesota.
               </p>
               <p>
-                I’m at my best on collaborative teams that share unfinished
-                ideas early, measure what matters, and leave every system easier
-                to understand than they found it.
+                Whether I’m tracing relationships across large codebases,
+                analyzing electrical schematics, or generating data for
+                underwater robots, I care about systems that are useful,
+                measurable, and easier for the next engineer to understand.
               </p>
-              <div className="template-note">
-                <span>EDIT NOTE</span>
-                The portfolio uses sample content. Replace it in one data file
-                when your details are ready.
-              </div>
             </div>
           </div>
           <div className="principles" aria-label="Working principles">
@@ -479,8 +475,9 @@ export default function Home() {
             <span>worth testing.</span>
           </h2>
           <p>
-            I’m interested in internships, research, and ambitious student
-            teams working on real engineering problems.
+            I’m interested in software, robotics, AI, and infrastructure work
+            where careful engineering turns ambitious ideas into useful
+            systems.
           </p>
           <div className="contact-actions">
             <a

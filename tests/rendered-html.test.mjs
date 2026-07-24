@@ -34,8 +34,14 @@ test("server-renders the engineering portfolio", async () => {
 
   const html = await response.text();
   assert.doesNotMatch(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your Name — Engineering Portfolio<\/title>/i);
-  assert.match(html, /Designing systems that move ideas into the/);
+  assert.match(
+    html,
+    /<title>Rahul Chimata — Robotics &amp; Software Engineer<\/title>/i,
+  );
+  assert.match(html, /Building intelligent systems across/);
+  assert.match(html, /Software Developer Intern/);
+  assert.match(html, /IBM/);
+  assert.match(html, /Mortenson/);
   assert.match(html, /Selected Projects/i);
   assert.match(html, /Experience/i);
   assert.match(html, /Skills &amp; Tools/i);
@@ -55,6 +61,8 @@ test("keeps content editable and removes starter assets", async () => {
   assert.match(page, /id="projects"/);
   assert.match(data, /export type PortfolioData/);
   assert.match(data, /resumeUrl\?: string/);
+  assert.match(data, /RAHUL CHIMATA/);
+  assert.match(data, /resumeUrl: "\/resume\.pdf"/);
   assert.match(layout, /generateMetadata/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(

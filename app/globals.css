@@ -518,25 +518,6 @@ button.button {
   margin-top: 5px;
 }
 
-.template-note {
-  margin-top: 38px;
-  padding: 18px;
-  border: 1px solid #d5d5ec;
-  background: #f0f0ff;
-  color: #4f5060;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-}
-
-.template-note span {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--indigo);
-  font-weight: 700;
-}
-
 .principles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -981,6 +962,10 @@ button.button {
   padding: 44px 0;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--line);
+}
+
+.education-card + .education-card {
+  border-top: 0;
 }
 
 .education-monogram {

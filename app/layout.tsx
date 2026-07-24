@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const metadataBase = new URL(`${protocol}://${host}`);
-  const title = "Your Name — Engineering Portfolio";
+  const title = "Rahul Chimata — Robotics & Software Engineer";
   const description =
-    "Engineering student portfolio featuring systems, robotics, embedded design, and hands-on project work.";
+    "Rahul Chimata’s engineering portfolio: enterprise AI, robotics research, infrastructure software, embedded systems, and computer vision.";
 
   return {
     metadataBase,
@@ -41,10 +41,10 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: "/og.png",
+          url: "/og-rahul.png",
           width: 1536,
           height: 1024,
-          alt: "Your Name engineering portfolio",
+          alt: "Rahul Chimata engineering portfolio",
         },
       ],
     },
@@ -52,7 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og.png"],
+      images: ["/og-rahul.png"],
     },
   };
 }

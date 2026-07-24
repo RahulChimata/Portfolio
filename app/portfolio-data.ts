@@ -33,6 +33,7 @@ export type PortfolioData = {
     initials: string;
     eyebrow: string;
     headline: string;
+    headlineAccent: string;
     introduction: string;
     location: string;
     availability: string;
@@ -50,134 +51,161 @@ export type PortfolioData = {
   resumeUrl?: string;
 };
 
-/**
- * Replace the sample copy in this file with your real portfolio details.
- * Optional links are intentionally omitted so the starter never renders
- * broken actions.
- */
 export const portfolioData: PortfolioData = {
   profile: {
-    name: "YOUR NAME",
-    initials: "YN",
-    eyebrow: "Engineering student · Systems thinker · Builder",
-    headline: "Designing systems that move ideas into the real world.",
+    name: "RAHUL CHIMATA",
+    initials: "RC",
+    eyebrow: "Robotics · Computer Science · Computer Engineering",
+    headline: "Building intelligent systems across",
+    headlineAccent: "software & robotics.",
     introduction:
-      "I’m an engineering student drawn to the space where hardware, software, and thoughtful design meet. I turn ambiguous problems into tested, practical systems—and document the decisions along the way.",
-    location: "Based in your city",
-    availability: "Open to internships & research roles",
-    email: "hello@yourname.dev",
+      "I’m a University of Minnesota engineer working across enterprise AI, robotics research, infrastructure software, and embedded systems. I turn complex technical problems into practical, well-tested tools.",
+    location: "Minneapolis, Minnesota",
+    availability: "M.S. Robotics · Expected Dec. 2027",
+    email: "rahul.chimata@gmail.com",
   },
   experience: [
     {
-      period: "SUMMER 2026",
-      role: "Engineering Intern",
-      organization: "Technology Company",
+      period: "MAY — AUG. 2026",
+      role: "Software Developer Intern",
+      organization: "IBM · Lowell, Massachusetts",
       summary:
-        "Use this entry to describe the system, product, or process you helped improve—and the people who benefited from it.",
+        "Architected and developed InfraHub, a production-grade enterprise knowledge retrieval system that helps HashiCorp engineers find infrastructure documentation, decisions, ownership information, and relevant code.",
       highlights: [
-        "Quantify a result: cycle time, accuracy, reliability, cost, or test coverage.",
-        "Name the engineering decision you owned and how you validated it.",
+        "Built a watsonx-powered RAG pipeline spanning Backstage, Confluence, GitHub, and W3, combining BM25 and vector search with intent-aware ranking and trust scoring.",
+        "Developed an MCP-based repository relationship tracker using graph and vector databases to map dependencies across HashiCorp repositories and broaden context for engineers and AI coding agents.",
       ],
     },
     {
-      period: "2025 — PRESENT",
-      role: "Undergraduate Researcher",
-      organization: "University Research Lab",
+      period: "MAY 2024 — SEP. 2025",
+      role: "Software Developer & SCADA/P&C Engineering Intern",
+      organization: "Mortenson Engineering Services · Golden Valley, Minnesota",
       summary:
-        "Explain the research question, your experimental or computational contribution, and what the team learned.",
+        "Developed a Python, React, and FastAPI application that expedited protection and control engineering work by 15% by extracting structured data from electrical substation schematics.",
       highlights: [
-        "Describe the apparatus, model, or analysis pipeline you developed.",
-        "Reference a poster, paper, dataset, or milestone when available.",
+        "Applied RAG, deep-learning image models, YOLO, agentic AI, Pandas, and REST APIs to process hundreds of schematics and prepare data for AutoCAD.",
+        "Designed electrical and fiber-optic layouts, programmed real-time automation controllers, aggregated field data, and configured human-machine interfaces.",
       ],
     },
     {
-      period: "2024 — 2025",
-      role: "Design Team Lead",
-      organization: "Engineering Design Team",
+      period: "NOV. 2025 — PRESENT",
+      role: "Undergraduate Research Assistant",
+      organization: "University of Minnesota · Minneapolis, Minnesota",
       summary:
-        "Show how you coordinated technical work, handled constraints, and moved a multidisciplinary team toward a build.",
+        "Contribute to machine-learning research in the Minnesota Interactive Robotics and Vision Laboratory and to research on natural language processing.",
       highlights: [
-        "Highlight a design review, prototype iteration, or competition result.",
-        "Include collaboration across mechanical, electrical, and software work.",
+        "Generate synthetic underwater-trash datasets with Blender, diffusion models, LLMs, and YOLOv11 to improve vision-model accuracy for underwater robots.",
+        "Investigate dataset sparsity and agreement scaling laws while exploring NLP models that predict individual annotator responses to sentiment and offensiveness tasks.",
+      ],
+    },
+    {
+      period: "SEP. — DEC. 2024",
+      role: "Undergraduate Teaching Assistant",
+      organization: "University of Minnesota · Minneapolis, Minnesota",
+      summary:
+        "Supported Machine Architecture and Organization and Introduction to Robotics through hands-on instruction, mentoring, office hours, and assessment.",
+      highlights: [
+        "Led laboratory instruction in ROS 2, robotics principles, C, x86-64 assembly, and computer architecture.",
+        "Mentored students, conducted office hours, and graded technical coursework.",
+      ],
+    },
+    {
+      period: "JUL. 2020 — MAY 2023",
+      role: "EyeDA Project Co-Founder",
+      organization: "Shreya R. Dixit Memorial Foundation · Eden Prairie, Minnesota",
+      summary:
+        "Co-founded a driver-safety project centered on a Python facial-recognition prototype for detecting driver distraction.",
+      highlights: [
+        "Built the prototype with OpenCV and MediaPipe.",
+        "Managed interns and collaborated with industry, news, and community organizations to advance the project.",
       ],
     },
   ],
   projects: [
     {
-      id: "autonomous-rover",
+      id: "autonomous-drone",
       number: "01",
-      title: "Autonomous Rover",
-      category: "ROBOTICS · SAMPLE PROJECT",
+      title: "Autonomous Drone Simulation",
+      category: "AUTONOMY · BACKEND SYSTEMS",
       summary:
-        "A compact field robot that maps unfamiliar terrain and plans a safe route in real time.",
+        "A containerized backend for a reproducible drone-simulation environment and autonomous path-planning experiments.",
       challenge:
-        "Create dependable navigation from noisy sensors while staying within a student-scale power, compute, and fabrication budget.",
+        "Create a scalable simulation backend that could model route constraints and environmental effects while supporting repeatable engineering experiments.",
       approach:
-        "Combine modular mechanical packaging with sensor fusion, occupancy mapping, and repeatable bench-to-field test protocols.",
+        "Used C++, containerization, CI/CD practices, and agile Git workflows to implement path planning, package routing, singleton data accumulation, weather-impact accounting, and robust backend endpoints.",
       outcome:
-        "Replace this text with a measurable result such as route completion, localization error, runtime, or competition placement.",
-      technologies: ["ROS 2", "C++", "Python", "LiDAR", "CAD"],
+        "Delivered a reproducible simulation backend designed to support research, experimentation, and future system scaling.",
+      technologies: ["C++", "Backend", "Docker", "CI/CD", "Git", "Agile"],
     },
     {
-      id: "energy-monitor",
+      id: "solar-tracker",
       number: "02",
-      title: "Smart Energy Monitor",
-      category: "EMBEDDED SYSTEMS · SAMPLE PROJECT",
+      title: "Solar Tracking System",
+      category: "EMBEDDED SYSTEMS · CIRCUIT DESIGN",
       summary:
-        "A non-invasive device that turns live electrical measurements into useful energy insights.",
+        "An embedded control system that reads external sensor hardware and automatically adjusts solar-panel movement.",
       challenge:
-        "Capture meaningful data safely, filter measurement noise, and make the resulting information clear enough to change behavior.",
+        "Reliably move a solar panel in response to analog sensor data using constrained embedded hardware and low-level communication.",
       approach:
-        "Prototype the sensing circuit, calibrate it against known loads, and stream summarized readings to a focused web interface.",
+        "Developed C and assembly interfaces around the I²C protocol to retrieve analog-to-digital converter measurements from external hardware.",
       outcome:
-        "Add the accuracy achieved, sampling performance, or energy-saving insight your finished project produced.",
-      technologies: ["ESP32", "C", "Signal Processing", "React", "PCB Design"],
+        "Integrated sensing, communication, and motion logic into an automated solar-tracking prototype.",
+      technologies: ["C", "Assembly", "I²C", "ADC", "Microcontrollers", "Circuits"],
     },
     {
-      id: "composite-rig",
+      id: "eyeda",
       number: "03",
-      title: "Composite Test Rig",
-      category: "MECHANICAL DESIGN · SAMPLE PROJECT",
+      title: "EyeDA Driver Safety",
+      category: "COMPUTER VISION · PROJECT LEADERSHIP",
       summary:
-        "A modular fixture for repeatable structural testing of lightweight composite coupons.",
+        "A facial-recognition prototype that detects driver distraction and supports safer driving behavior.",
       challenge:
-        "Design a safe, stiff, and adaptable rig that reduces setup variation without obscuring specimen behavior.",
+        "Translate computer-vision research into an approachable driver-safety prototype while coordinating a small project team.",
       approach:
-        "Use first-principles sizing and finite-element checks, then validate alignment and stiffness through progressive load tests.",
+        "Built the detection prototype in Python with OpenCV and MediaPipe, managed interns, and collaborated with external organizations.",
       outcome:
-        "Insert a result such as reduced setup time, improved repeatability, maximum load, or correlation to simulation.",
-      technologies: ["SolidWorks", "FEA", "GD&T", "DAQ", "Rapid Prototyping"],
+        "Advanced the project through technical development and recognition from industry, news, and community organizations.",
+      technologies: ["Python", "OpenCV", "MediaPipe", "Computer Vision", "CAD"],
     },
   ],
   skills: [
     {
-      category: "DESIGN",
-      items: ["CAD", "GD&T", "Design for Manufacturing", "Rapid Prototyping"],
+      category: "SOFTWARE",
+      items: ["Python", "C / C++", "Java", "JavaScript & TypeScript", "SQL"],
     },
     {
-      category: "COMPUTE",
-      items: ["Python", "C / C++", "MATLAB", "React & TypeScript"],
+      category: "AI & DATA",
+      items: ["RAG & Vector Search", "Computer Vision", "YOLO", "Diffusion Models", "NLP"],
     },
     {
-      category: "ANALYSIS",
-      items: ["FEA", "Data Acquisition", "Signal Processing", "Technical Writing"],
+      category: "FRAMEWORKS",
+      items: ["React", "Node.js", "FastAPI", "Flask", "Docker & Terraform"],
     },
     {
-      category: "BUILD",
-      items: ["3D Printing", "Machining", "Embedded Systems", "Test Planning"],
+      category: "ROBOTICS",
+      items: ["ROS 2", "Embedded Systems", "I²C & Microcontrollers", "Verilog", "Vivado"],
     },
   ],
   education: [
     {
-      degree: "B.S. in Your Engineering Discipline",
-      school: "Your University",
-      period: "Expected 2027",
+      degree: "Master’s in Robotics",
+      school: "University of Minnesota - Twin Cities",
+      period: "May 2026 — Dec. 2027",
       focus:
-        "Relevant focus: controls, product design, embedded systems, robotics, or the coursework that best supports your goals.",
+        "Graduate study focused on robotics, intelligent systems, perception, autonomy, and the software that connects research to real-world machines.",
+    },
+    {
+      degree: "B.S. in Computer Science & Computer Engineering",
+      school: "University of Minnesota - Twin Cities",
+      period: "Aug. 2023 — May 2027",
+      focus:
+        "An interdisciplinary foundation spanning computer architecture, software systems, machine learning, electronics, and robotics.",
     },
   ],
   contact: {
-    email: "hello@yourname.dev",
+    email: "rahul.chimata@gmail.com",
+    linkedinUrl: "https://www.linkedin.com/in/rchimata/",
+    githubUrl: "https://github.com/RahulChimata",
   },
-  resumeUrl: undefined,
+  resumeUrl: "/resume.pdf",
 };
