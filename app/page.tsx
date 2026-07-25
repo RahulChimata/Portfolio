@@ -483,7 +483,7 @@ export default function Home() {
           {data.education.map((entry) => (
             <article className="education-card" key={entry.degree}>
               <div className="education-monogram" aria-hidden="true">
-                U
+                M
               </div>
               <div>
                 <p>{entry.period}</p>
