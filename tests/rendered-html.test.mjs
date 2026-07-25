@@ -63,6 +63,15 @@ test("keeps content editable and removes starter assets", async () => {
   assert.match(data, /resumeUrl\?: string/);
   assert.match(data, /RAHUL CHIMATA/);
   assert.match(data, /resumeUrl: "\/resume\.pdf"/);
+  assert.match(data, /icon: "drone"/);
+  assert.match(data, /icon: "solar"/);
+  assert.match(data, /icon: "eye"/);
+  assert.match(
+    data,
+    /hub\.docker\.com\/r\/rahulchimata\/drone_sim_final_project/,
+  );
+  assert.match(data, /RahulChimata\/Solar-Tracking-Project/);
+  assert.match(data, /shreyadixit\.org\/shreya-innovation-lab/);
   assert.match(layout, /generateMetadata/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(

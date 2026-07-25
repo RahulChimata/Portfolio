@@ -9,6 +9,7 @@ export type ExperienceEntry = {
 export type ProjectEntry = {
   id: string;
   number: string;
+  icon: "drone" | "solar" | "eye";
   title: string;
   category: string;
   summary: string;
@@ -16,8 +17,10 @@ export type ProjectEntry = {
   approach: string;
   outcome: string;
   technologies: string[];
-  repositoryUrl?: string;
-  demoUrl?: string;
+  links: {
+    label: string;
+    url: string;
+  }[];
 };
 
 export type EducationEntry = {
@@ -125,6 +128,7 @@ export const portfolioData: PortfolioData = {
     {
       id: "autonomous-drone",
       number: "01",
+      icon: "drone",
       title: "Autonomous Drone Simulation",
       category: "AUTONOMY · BACKEND SYSTEMS",
       summary:
@@ -136,10 +140,17 @@ export const portfolioData: PortfolioData = {
       outcome:
         "Delivered a reproducible simulation backend designed to support research, experimentation, and future system scaling.",
       technologies: ["C++", "Backend", "Docker", "CI/CD", "Git", "Agile"],
+      links: [
+        {
+          label: "Docker Hub",
+          url: "https://hub.docker.com/r/rahulchimata/drone_sim_final_project",
+        },
+      ],
     },
     {
       id: "solar-tracker",
       number: "02",
+      icon: "solar",
       title: "Solar Tracking System",
       category: "EMBEDDED SYSTEMS · CIRCUIT DESIGN",
       summary:
@@ -151,10 +162,17 @@ export const portfolioData: PortfolioData = {
       outcome:
         "Integrated sensing, communication, and motion logic into an automated solar-tracking prototype.",
       technologies: ["C", "Assembly", "I²C", "ADC", "Microcontrollers", "Circuits"],
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/RahulChimata/Solar-Tracking-Project",
+        },
+      ],
     },
     {
       id: "eyeda",
       number: "03",
+      icon: "eye",
       title: "EyeDA Driver Safety",
       category: "COMPUTER VISION · PROJECT LEADERSHIP",
       summary:
@@ -166,6 +184,12 @@ export const portfolioData: PortfolioData = {
       outcome:
         "Advanced the project through technical development and recognition from industry, news, and community organizations.",
       technologies: ["Python", "OpenCV", "MediaPipe", "Computer Vision", "CAD"],
+      links: [
+        {
+          label: "Project site",
+          url: "https://shreyadixit.org/shreya-innovation-lab/",
+        },
+      ],
     },
   ],
   skills: [

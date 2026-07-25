@@ -692,58 +692,267 @@ button.button {
 }
 
 .project-graphic {
+  --symbol-line: rgba(79, 70, 229, 0.52);
+  --symbol-accent: var(--indigo);
   position: relative;
   display: block;
   width: 100%;
   height: 190px;
   margin: 24px 0 18px;
-  perspective: 600px;
+  overflow: hidden;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.project-graphic i {
+.project-card:hover .project-graphic,
+.project-card.is-active .project-graphic {
+  --symbol-line: rgba(255, 255, 255, 0.62);
+  --symbol-accent: var(--cyan);
+}
+
+.drone-arm {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 112px;
-  height: 112px;
-  border: 1px solid rgba(79, 70, 229, 0.45);
-  transform: translate(-50%, -50%) rotateX(66deg) rotateZ(42deg);
+  width: 156px;
+  height: 2px;
+  background: var(--symbol-line);
+  transition: background 280ms ease;
+}
+
+.drone-arm--one {
+  transform: translate(-50%, -50%) rotate(28deg);
+}
+
+.drone-arm--two {
+  transform: translate(-50%, -50%) rotate(-28deg);
+}
+
+.drone-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 30px;
+  border: 1px solid var(--symbol-line);
+  border-radius: 9px 9px 15px 15px;
+  background: rgba(79, 70, 229, 0.08);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.16);
+  transform: translate(-50%, -50%);
+  transition:
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.drone-body::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  content: "";
+  background: var(--symbol-accent);
+  box-shadow: 0 0 18px var(--symbol-accent);
+  transform: translate(-50%, -50%);
+  transition: background 280ms ease;
+}
+
+.drone-rotor {
+  position: absolute;
+  width: 54px;
+  height: 18px;
+  border: 1px solid var(--symbol-line);
+  border-radius: 50%;
   transition:
     border-color 280ms ease,
     transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.project-graphic i:nth-child(2) {
-  width: 82px;
-  height: 82px;
-  border-color: rgba(34, 211, 238, 0.65);
-  transform: translate(-50%, -50%) rotateY(62deg) rotateZ(18deg);
-}
-
-.project-graphic i:nth-child(3) {
-  width: 24px;
-  height: 24px;
-  border: 0;
+.drone-rotor::after {
+  position: absolute;
+  inset: 4px 17px;
   border-radius: 50%;
-  background: var(--indigo);
-  box-shadow: 0 0 36px rgba(79, 70, 229, 0.55);
-  transform: translate(-50%, -50%);
+  content: "";
+  background: var(--symbol-accent);
+  opacity: 0.8;
 }
 
-.project-card:hover .project-graphic i:first-child,
-.project-card.is-active .project-graphic i:first-child {
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translate(-50%, -50%) rotateX(62deg) rotateZ(88deg);
+.drone-rotor--one {
+  top: 24%;
+  left: 12%;
 }
 
-.project-card:hover .project-graphic i:nth-child(2),
-.project-card.is-active .project-graphic i:nth-child(2) {
-  transform: translate(-50%, -50%) rotateY(58deg) rotateZ(-38deg);
+.drone-rotor--two {
+  top: 24%;
+  right: 12%;
 }
 
-.project-card:hover .project-graphic i:nth-child(3),
-.project-card.is-active .project-graphic i:nth-child(3) {
-  background: var(--cyan);
+.drone-rotor--three {
+  bottom: 24%;
+  left: 12%;
+}
+
+.drone-rotor--four {
+  right: 12%;
+  bottom: 24%;
+}
+
+.project-card:hover .drone-rotor,
+.project-card.is-active .drone-rotor {
+  transform: scaleX(1.14);
+}
+
+.project-card:hover .drone-body,
+.project-card.is-active .drone-body {
+  background: rgba(34, 211, 238, 0.12);
+  box-shadow: 0 14px 38px rgba(34, 211, 238, 0.18);
+}
+
+.solar-sun {
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--symbol-accent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 9px rgba(79, 70, 229, 0.06),
+    0 0 28px rgba(79, 70, 229, 0.22);
+  transition:
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    transform 500ms ease;
+}
+
+.solar-panel {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 158px;
+  height: 94px;
+  border: 1px solid var(--symbol-line);
+  background:
+    linear-gradient(90deg, transparent 24%, var(--symbol-line) 25%, transparent 26%, transparent 49%, var(--symbol-line) 50%, transparent 51%, transparent 74%, var(--symbol-line) 75%, transparent 76%),
+    linear-gradient(transparent 32%, var(--symbol-line) 33%, transparent 34%, transparent 65%, var(--symbol-line) 66%, transparent 67%),
+    rgba(79, 70, 229, 0.07);
+  box-shadow: 16px 22px 34px rgba(49, 46, 129, 0.14);
+  transform: translate(-50%, -50%) perspective(420px) rotateX(55deg)
+    rotateZ(-12deg);
+  transition:
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 280ms ease,
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.solar-stand {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  width: 2px;
+  height: 35px;
+  background: var(--symbol-line);
+  transform: translateX(-50%);
+}
+
+.solar-stand::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 70px;
+  height: 1px;
+  content: "";
+  background: var(--symbol-line);
+  transform: translateX(-50%);
+}
+
+.project-card:hover .solar-panel,
+.project-card.is-active .solar-panel {
+  background:
+    linear-gradient(90deg, transparent 24%, var(--symbol-line) 25%, transparent 26%, transparent 49%, var(--symbol-line) 50%, transparent 51%, transparent 74%, var(--symbol-line) 75%, transparent 76%),
+    linear-gradient(transparent 32%, var(--symbol-line) 33%, transparent 34%, transparent 65%, var(--symbol-line) 66%, transparent 67%),
+    rgba(34, 211, 238, 0.1);
+  box-shadow: 18px 24px 44px rgba(34, 211, 238, 0.16);
+  transform: translate(-50%, -50%) perspective(420px) rotateX(55deg)
+    rotateZ(-3deg) scale(1.04);
+}
+
+.project-card:hover .solar-sun,
+.project-card.is-active .solar-sun {
+  box-shadow:
+    0 0 0 11px rgba(34, 211, 238, 0.08),
+    0 0 34px rgba(34, 211, 238, 0.36);
+  transform: scale(1.08);
+}
+
+.eye-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 118px;
+  height: 118px;
+  border: 1px solid var(--symbol-line);
+  border-radius: 84% 8% 84% 8%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition:
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eye-iris {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--symbol-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 26px rgba(79, 70, 229, 0.18);
+}
+
+.eye-pupil {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--symbol-accent);
+  box-shadow: 0 0 22px var(--symbol-accent);
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eye-scan-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 205px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--symbol-accent), transparent);
+  opacity: 0.45;
+  transform: translate(-50%, -50%) scaleX(0.78);
+  transition:
+    opacity 280ms ease,
+    transform 500ms ease;
+}
+
+.project-card:hover .eye-outline,
+.project-card.is-active .eye-outline {
+  box-shadow: 0 0 42px rgba(34, 211, 238, 0.14);
+  transform: translate(-50%, -50%) rotate(45deg) scale(1.08);
+}
+
+.project-card:hover .eye-pupil,
+.project-card.is-active .eye-pupil {
+  transform: translate(7px, -7px);
+}
+
+.project-card:hover .eye-scan-line,
+.project-card.is-active .eye-scan-line {
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .project-title {

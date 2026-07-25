@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EngineeringCanvas } from "./engineering-canvas";
-import { portfolioData } from "./portfolio-data";
+import { portfolioData, type ProjectEntry } from "./portfolio-data";
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -16,6 +16,52 @@ const navItems = [
 
 function ArrowIcon() {
   return <span aria-hidden="true">↗</span>;
+}
+
+function ProjectIcon({ icon }: { icon: ProjectEntry["icon"] }) {
+  if (icon === "drone") {
+    return (
+      <span
+        className="project-graphic project-graphic--drone"
+        aria-hidden="true"
+      >
+        <span className="drone-arm drone-arm--one" />
+        <span className="drone-arm drone-arm--two" />
+        <span className="drone-body" />
+        <span className="drone-rotor drone-rotor--one" />
+        <span className="drone-rotor drone-rotor--two" />
+        <span className="drone-rotor drone-rotor--three" />
+        <span className="drone-rotor drone-rotor--four" />
+      </span>
+    );
+  }
+
+  if (icon === "solar") {
+    return (
+      <span
+        className="project-graphic project-graphic--solar"
+        aria-hidden="true"
+      >
+        <span className="solar-sun" />
+        <span className="solar-panel" />
+        <span className="solar-stand" />
+      </span>
+    );
+  }
+
+  return (
+    <span
+      className="project-graphic project-graphic--eye"
+      aria-hidden="true"
+    >
+      <span className="eye-outline">
+        <span className="eye-iris">
+          <span className="eye-pupil" />
+        </span>
+      </span>
+      <span className="eye-scan-line" />
+    </span>
+  );
 }
 
 export default function Home() {
@@ -325,11 +371,7 @@ export default function Home() {
                 >
                   <span className="project-number">{project.number}</span>
                   <span className="project-category">{project.category}</span>
-                  <span className="project-graphic" aria-hidden="true">
-                    <i />
-                    <i />
-                    <i />
-                  </span>
+                  <ProjectIcon icon={project.icon} />
                   <span className="project-title">{project.title}</span>
                   <span className="project-summary">{project.summary}</span>
                   <span className="project-open">
@@ -384,24 +426,16 @@ export default function Home() {
                     ))}
                   </ul>
                   <div className="project-links">
-                    {selectedProject.repositoryUrl && (
+                    {selectedProject.links.map((link) => (
                       <a
-                        href={selectedProject.repositoryUrl}
+                        key={link.url}
+                        href={link.url}
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Source <ArrowIcon />
+                        {link.label} <ArrowIcon />
                       </a>
-                    )}
-                    {selectedProject.demoUrl && (
-                      <a
-                        href={selectedProject.demoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Demo <ArrowIcon />
-                      </a>
-                    )}
+                    ))}
                   </div>
                 </div>
               </article>
