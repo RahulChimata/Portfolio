@@ -219,11 +219,18 @@ export const portfolioData: PortfolioData = {
         "Graduate study focused on robotics, intelligent systems, perception, autonomy, and the software that connects research to real-world machines.",
     },
     {
-      degree: "B.S. in Computer Science & Computer Engineering",
+      degree: "B.S. in Computer Science",
       school: "University of Minnesota - Twin Cities",
       period: "Aug. 2023 — May 2027",
       focus:
-        "An interdisciplinary foundation spanning computer architecture, software systems, machine learning, electronics, and robotics.",
+        "Coursework and project work spanning software systems, algorithms, artificial intelligence, machine learning, and human-centered computing.",
+    },
+    {
+      degree: "B.S. in Computer Engineering",
+      school: "University of Minnesota - Twin Cities",
+      period: "Aug. 2023 — May 2027",
+      focus:
+        "An engineering foundation across computer architecture, embedded systems, digital design, electronics, and robotics.",
     },
   ],
   contact: {

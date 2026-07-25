@@ -63,6 +63,8 @@ test("keeps content editable and removes starter assets", async () => {
   assert.match(data, /resumeUrl\?: string/);
   assert.match(data, /RAHUL CHIMATA/);
   assert.match(data, /resumeUrl: "\/resume\.pdf"/);
+  assert.match(data, /B\.S\. in Computer Science"/);
+  assert.match(data, /B\.S\. in Computer Engineering"/);
   assert.match(data, /icon: "drone"/);
   assert.match(data, /icon: "solar"/);
   assert.match(data, /icon: "eye"/);
