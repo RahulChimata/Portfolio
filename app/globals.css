@@ -498,14 +498,33 @@ button.button {
 .about-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
+  align-items: start;
   gap: clamp(70px, 10vw, 160px);
 }
 
-.about-lead {
+.about-portrait {
+  width: min(100%, 460px);
   margin: 0;
-  font-size: clamp(29px, 3.1vw, 49px);
-  letter-spacing: -0.045em;
-  line-height: 1.18;
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--ink);
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+.about-portrait figcaption {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .about-copy {
@@ -1576,8 +1595,8 @@ button.button {
     max-width: 420px;
   }
 
-  .about-lead {
-    font-size: 29px;
+  .about-portrait {
+    width: min(100%, 420px);
   }
 
   .principles {

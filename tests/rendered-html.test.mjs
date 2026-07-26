@@ -46,6 +46,12 @@ test("server-renders the engineering portfolio", async () => {
   assert.match(html, /Experience/i);
   assert.match(html, /Skills &amp; Tools/i);
   assert.match(html, /Contact/i);
+  assert.match(html, /rahul-chimata-headshot\.jpg/);
+  assert.match(html, /Rahul Chimata wearing a suit and tie/);
+  assert.doesNotMatch(
+    html,
+    /I build at the intersection of robotics, artificial intelligence/,
+  );
   assert.doesNotMatch(html, /react-loading-skeleton/);
 });
 

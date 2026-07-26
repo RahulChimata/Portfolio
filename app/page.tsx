@@ -277,10 +277,15 @@ export default function Home() {
             <h2>Curiosity, made tangible.</h2>
           </div>
           <div className="about-grid">
-            <p className="about-lead">
-              I build at the intersection of robotics, artificial intelligence,
-              infrastructure software, and embedded systems.
-            </p>
+            <figure className="about-portrait">
+              <img
+                src="/rahul-chimata-headshot.jpg"
+                alt="Rahul Chimata wearing a suit and tie"
+                width="800"
+                height="800"
+              />
+              <figcaption>Rahul Chimata · Minneapolis, MN</figcaption>
+            </figure>
             <div className="about-copy">
               <p>
                 My work spans enterprise retrieval at IBM, AI-powered tools for
@@ -475,9 +480,8 @@ export default function Home() {
           <div className="section-heading">
             <p className="section-number">05 / EDUCATION</p>
             <h2>
-              Strong fundamentals.
+              Academic experience.
               <br />
-              Always expanding.
             </h2>
           </div>
           {data.education.map((entry) => (
@@ -505,11 +509,10 @@ export default function Home() {
         <div className="contact-inner">
           <p className="section-number section-number--light">06 / CONTACT</p>
           <h2>
-            Let’s build something
-            <span>worth testing.</span>
+            <span>Let's connect!</span>
           </h2>
           <p>
-            I’m interested in software, robotics, AI, and infrastructure work
+            I’m interested in software, robotics, AI, and research work
             where careful engineering turns ambitious ideas into useful
             systems.
           </p>
