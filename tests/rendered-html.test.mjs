@@ -6,33 +6,11 @@ const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
 
-async function render() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request("http://localhost/", {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
+test("exports the engineering portfolio as static HTML", async () => {
+  const html = await readFile(
+    new URL("../out/index.html", import.meta.url),
+    "utf8",
   );
-}
-
-test("server-renders the engineering portfolio", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
   assert.doesNotMatch(html, developmentPreviewMeta);
   assert.match(
     html,
@@ -103,11 +81,15 @@ test("keeps the animated portfolio lean and removes starter infrastructure", asy
   assert.match(favicon, /stroke="#FFFFFF"/);
   assert.doesNotMatch(
     packageJson,
-    /react-loading-skeleton|drizzle|tailwindcss/,
+    /react-loading-skeleton|drizzle|tailwindcss|vinext|wrangler|vite-plugin/,
   );
   await Promise.all([
     assert.rejects(access(new URL("SkeletonPreview.tsx", previewRoot))),
     assert.rejects(access(new URL("../app/chatgpt-auth.ts", import.meta.url))),
     assert.rejects(access(new URL("../db/schema.ts", import.meta.url))),
+    assert.rejects(access(new URL("../vite.config.ts", import.meta.url))),
+    assert.rejects(
+      access(new URL("../.openai/hosting.json", import.meta.url)),
+    ),
   ]);
 });

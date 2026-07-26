@@ -1,6 +1,6 @@
 # Rahul Chimata Portfolio
 
-A single-page engineering portfolio built with React, TypeScript, Vinext, and
+A single-page engineering portfolio built with Next.js, React, TypeScript, and
 vanilla CSS. It includes an interactive engineering canvas, scroll-linked
 navigation and reveals, responsive motion, email links, résumé download, and
 external project/profile links.
@@ -13,6 +13,12 @@ npm run dev
 ```
 
 Open the local URL printed by the development server.
+
+## Vercel deployment
+
+The default `npm run build` command creates a static export in `out/`. Connect
+the repository to Vercel with the Next.js framework preset; pushes to `main`
+will build and deploy automatically.
 
 ## Validation
 
@@ -28,6 +34,3 @@ npm test
 - Edit styling in `app/globals.css`.
 - Replace `public/resume.pdf` when the résumé changes.
 - Replace `public/rahul-chimata-headshot.jpg` when the headshot changes.
-
-The `.openai/hosting.json`, `build/sites-vite-plugin.ts`, `vite.config.ts`, and
-`worker/index.ts` files are required by the current Sites deployment.
