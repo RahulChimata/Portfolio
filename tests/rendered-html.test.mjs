@@ -59,20 +59,24 @@ test("server-renders the engineering portfolio", async () => {
   assert.doesNotMatch(html, /react-loading-skeleton/);
 });
 
-test("keeps the portfolio static and removes starter infrastructure", async () => {
+test("keeps the animated portfolio lean and removes starter infrastructure", async () => {
   const [page, layout, data, packageJson, favicon] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readFile(new URL("../public/favicon.svg", import.meta.url), "utf8"),
+    readFile(new URL("../app/icon.svg", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /id="home"/);
-  assert.match(page, /href="#experience"[\s\S]*Explore my work/);
+  assert.match(
+    page,
+    /onClick=\{\(\) => navigate\("experience"\)\}[\s\S]*Explore my work/,
+  );
   assert.match(page, /id="projects"/);
-  assert.doesNotMatch(page, /"use client"|useEffect|useState|onClick=/);
-  assert.doesNotMatch(page, /EngineeringCanvas|project-detail/);
+  assert.match(page, /"use client"|useEffect|useState/);
+  assert.match(page, /EngineeringCanvas|scroll-progress|reveal/);
+  assert.doesNotMatch(page, /project-detail/);
   assert.match(data, /export type PortfolioData/);
   assert.match(data, /resumeUrl\?: string/);
   assert.match(data, /RAHUL CHIMATA/);
@@ -93,6 +97,7 @@ test("keeps the portfolio static and removes starter infrastructure", async () =
   assert.match(data, /x86-64 Assembly/);
   assert.match(data, /OpenCV & MediaPipe/);
   assert.match(layout, /export const metadata/);
+  assert.match(layout, /\/icon\.svg/);
   assert.doesNotMatch(layout, /headers\(\)|generateMetadata/);
   assert.match(favicon, /fill="#0B0C10"/);
   assert.match(favicon, /stroke="#FFFFFF"/);
@@ -102,9 +107,6 @@ test("keeps the portfolio static and removes starter infrastructure", async () =
   );
   await Promise.all([
     assert.rejects(access(new URL("SkeletonPreview.tsx", previewRoot))),
-    assert.rejects(
-      access(new URL("../app/engineering-canvas.tsx", import.meta.url)),
-    ),
     assert.rejects(access(new URL("../app/chatgpt-auth.ts", import.meta.url))),
     assert.rejects(access(new URL("../db/schema.ts", import.meta.url))),
   ]);

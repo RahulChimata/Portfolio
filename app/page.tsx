@@ -1,4 +1,8 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
+import { useCallback, useEffect, useState } from "react";
+import { EngineeringCanvas } from "./engineering-canvas";
 import { portfolioData, type ProjectEntry } from "./portfolio-data";
 
 const navItems = [
@@ -59,19 +63,96 @@ function ProjectIcon({ icon }: { icon: ProjectEntry["icon"] }) {
 }
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("home");
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const data = portfolioData;
+
+  useEffect(() => {
+    const sections = navItems
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0.05, 0.2, 0.5] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const revealElements = document.querySelectorAll<HTMLElement>(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    revealElements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(
+        scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0,
+      );
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    return () => window.removeEventListener("scroll", updateProgress);
+  }, []);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
+  const navigate = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "start",
+    });
+    setMobileOpen(false);
+  }, []);
 
   return (
     <main>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
+      <div
+        className="scroll-progress"
+        style={{ transform: `scaleX(${scrollProgress})` }}
+        aria-hidden="true"
+      />
 
       <header className="site-header">
         <a
           className="wordmark"
           href="#home"
           aria-label={`${data.profile.name}, back to top`}
+          onClick={(event) => {
+            event.preventDefault();
+            navigate("home");
+          }}
         >
           <span className="wordmark-mark">{data.profile.initials}</span>
           <span className="wordmark-name">{data.profile.name}</span>
@@ -79,26 +160,51 @@ export default function Home() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`}>
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              aria-current={activeSection === item.id ? "location" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                navigate(item.id);
+              }}
+            >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <details className="mobile-menu">
-          <summary className="menu-toggle" aria-label="Toggle navigation">
-            <span />
-            <span />
-          </summary>
-          <nav className="mobile-nav" aria-label="Mobile navigation">
-            {navItems.map((item, index) => (
-              <a key={item.id} href={`#${item.id}`}>
-                <span>0{index + 1}</span>
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </details>
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+
+        <nav
+          id="mobile-navigation"
+          className={`mobile-nav ${mobileOpen ? "is-open" : ""}`}
+          aria-label="Mobile navigation"
+        >
+          {navItems.map((item, index) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(event) => {
+                event.preventDefault();
+                navigate(item.id);
+              }}
+            >
+              <span>0{index + 1}</span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </header>
 
       <section id="home" className="hero">
@@ -110,9 +216,13 @@ export default function Home() {
           </h1>
           <p className="hero-intro">{data.profile.introduction}</p>
           <div className="hero-actions">
-            <a className="button button--dark" href="#experience">
+            <button
+              className="button button--dark"
+              type="button"
+              onClick={() => navigate("experience")}
+            >
               Explore my work <span aria-hidden="true">↓</span>
-            </a>
+            </button>
             <a className="text-link" href={`mailto:${data.profile.email}`}>
               Start a conversation <ArrowIcon />
             </a>
@@ -123,15 +233,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="engineering-visual" aria-hidden="true">
-          <div className="engineering-fallback">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="visual-index visual-index--top">X 42.17</div>
-          <div className="visual-index visual-index--bottom">Y 08.96</div>
-        </div>
+        <EngineeringCanvas />
 
         <div className="hero-rail" aria-hidden="true">
           <span>SCROLL TO EXPLORE</span>
@@ -140,7 +242,7 @@ export default function Home() {
       </section>
 
       <div className="content-shell">
-        <section id="about" className="section about-section">
+        <section id="about" className="section about-section reveal">
           <div className="section-heading">
             <p className="section-number">01 / ABOUT</p>
             <h2>Learn about me.</h2>
@@ -195,7 +297,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="section">
+        <section id="experience" className="section reveal">
           <div className="section-heading section-heading--split">
             <div>
               <p className="section-number">02 / EXPERIENCE</p>
@@ -228,7 +330,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="projects" className="section">
+        <section id="projects" className="section reveal">
           <div className="section-heading section-heading--split">
             <div>
               <p className="section-number">03 / PROJECTS</p>
@@ -269,7 +371,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="section skills-section">
+        <section id="skills" className="section skills-section reveal">
           <div className="section-heading section-heading--split">
             <div>
               <p className="section-number">04 / SKILLS & TOOLS</p>
@@ -297,7 +399,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="education" className="section education-section">
+        <section id="education" className="section education-section reveal">
           <div className="section-heading">
             <p className="section-number">05 / EDUCATION</p>
             <h2>Academic experience.</h2>
@@ -318,7 +420,7 @@ export default function Home() {
         </section>
       </div>
 
-      <section id="contact" className="contact-section">
+      <section id="contact" className="contact-section reveal">
         <div className="contact-orbit" aria-hidden="true">
           <span />
           <span />
@@ -371,7 +473,9 @@ export default function Home() {
                   GitHub
                 </a>
               )}
-              <a href="#home">Back to top ↑</a>
+              <button type="button" onClick={() => navigate("home")}>
+                Back to top ↑
+              </button>
             </div>
           </div>
         </div>

@@ -103,6 +103,18 @@ a:focus-visible,
   transform: translateY(0);
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--indigo), var(--cyan));
+  transform-origin: left;
+  transition: transform 80ms linear;
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -170,15 +182,16 @@ a:focus-visible,
   transition: transform 220ms ease;
 }
 
-.desktop-nav a:hover {
+.desktop-nav a:hover,
+.desktop-nav a[aria-current="location"] {
   color: var(--ink);
 }
 
-.desktop-nav a:hover::after {
+.desktop-nav a:hover::after,
+.desktop-nav a[aria-current="location"]::after {
   transform: scaleX(1);
 }
 
-.mobile-menu,
 .menu-toggle,
 .mobile-nav {
   display: none;
@@ -374,6 +387,14 @@ button.button {
   left: 10%;
   border-bottom: 1px solid var(--ink);
   border-left: 1px solid var(--ink);
+}
+
+.engineering-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: pan-y;
 }
 
 .engineering-fallback {
@@ -1275,6 +1296,19 @@ button.button {
   box-shadow: 0 0 42px var(--cyan);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 1050px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1282,11 +1316,6 @@ button.button {
 
   .desktop-nav {
     display: none;
-  }
-
-  .mobile-menu {
-    display: block;
-    margin-left: auto;
   }
 
   .menu-toggle {
@@ -1298,11 +1327,6 @@ button.button {
     border: 0;
     background: transparent;
     cursor: pointer;
-    list-style: none;
-  }
-
-  .menu-toggle::-webkit-details-marker {
-    display: none;
   }
 
   .menu-toggle span {
@@ -1322,12 +1346,12 @@ button.button {
     top: 23px;
   }
 
-  .mobile-menu[open] .menu-toggle span:first-child {
+  .menu-toggle[aria-expanded="true"] span:first-child {
     top: 19px;
     transform: rotate(45deg);
   }
 
-  .mobile-menu[open] .menu-toggle span:last-child {
+  .menu-toggle[aria-expanded="true"] span:last-child {
     top: 19px;
     transform: rotate(-45deg);
   }
@@ -1351,7 +1375,7 @@ button.button {
       padding 180ms ease;
   }
 
-  .mobile-menu[open] .mobile-nav {
+  .mobile-nav.is-open {
     grid-template-rows: repeat(7, 1fr);
     padding-top: 14px;
     padding-bottom: 20px;
@@ -1610,5 +1634,10 @@ button.button {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

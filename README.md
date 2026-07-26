@@ -1,8 +1,9 @@
 # Rahul Chimata Portfolio
 
 A single-page engineering portfolio built with React, TypeScript, Vinext, and
-vanilla CSS. The page is server-rendered and uses native links for section
-navigation, email, résumé download, and external profiles.
+vanilla CSS. It includes an interactive engineering canvas, scroll-linked
+navigation and reveals, responsive motion, email links, résumé download, and
+external project/profile links.
 
 ## Local development
 
