@@ -13,9 +13,6 @@ export type ProjectEntry = {
   title: string;
   category: string;
   summary: string;
-  challenge: string;
-  approach: string;
-  outcome: string;
   technologies: string[];
   links: {
     label: string;
@@ -133,12 +130,6 @@ export const portfolioData: PortfolioData = {
       category: "AUTONOMY · BACKEND SYSTEMS",
       summary:
         "A containerized backend for a reproducible drone-simulation environment and autonomous path-planning experiments.",
-      challenge:
-        "Create a scalable simulation backend that could model route constraints and environmental effects while supporting repeatable engineering experiments.",
-      approach:
-        "Used C++, containerization, CI/CD practices, and agile Git workflows to implement path planning, package routing, singleton data accumulation, weather-impact accounting, and robust backend endpoints.",
-      outcome:
-        "Delivered a reproducible simulation backend designed to support research, experimentation, and future system scaling.",
       technologies: ["C++", "Backend", "Docker", "CI/CD", "Git", "Agile"],
       links: [
         {
@@ -155,12 +146,6 @@ export const portfolioData: PortfolioData = {
       category: "EMBEDDED SYSTEMS · CIRCUIT DESIGN",
       summary:
         "An embedded control system that reads external sensor hardware and automatically adjusts solar-panel movement.",
-      challenge:
-        "Reliably move a solar panel in response to analog sensor data using constrained embedded hardware and low-level communication.",
-      approach:
-        "Developed C and assembly interfaces around the I²C protocol to retrieve analog-to-digital converter measurements from external hardware.",
-      outcome:
-        "Integrated sensing, communication, and motion logic into an automated solar-tracking prototype.",
       technologies: ["C", "Assembly", "I²C", "ADC", "Microcontrollers", "Circuits"],
       links: [
         {
@@ -177,12 +162,6 @@ export const portfolioData: PortfolioData = {
       category: "COMPUTER VISION · PROJECT LEADERSHIP",
       summary:
         "A facial-recognition prototype that detects driver distraction and supports safer driving behavior.",
-      challenge:
-        "Translate computer-vision research into an approachable driver-safety prototype while coordinating a small project team.",
-      approach:
-        "Built the detection prototype in Python with OpenCV and MediaPipe, managed interns, and collaborated with external organizations.",
-      outcome:
-        "Advanced the project through technical development and recognition from industry, news, and community organizations.",
       technologies: ["Python", "OpenCV", "MediaPipe", "Computer Vision", "CAD"],
       links: [
         {
