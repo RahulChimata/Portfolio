@@ -59,6 +59,7 @@ test("keeps content editable and removes starter assets", async () => {
   ]);
 
   assert.match(page, /id="home"/);
+  assert.match(page, /onClick=\{\(\) => navigate\("experience"\)\}[\s\S]*Explore my work/);
   assert.match(page, /id="projects"/);
   assert.match(data, /export type PortfolioData/);
   assert.match(data, /resumeUrl\?: string/);

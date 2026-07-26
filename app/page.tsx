@@ -250,7 +250,7 @@ export default function Home() {
             <button
               className="button button--dark"
               type="button"
-              onClick={() => navigate("projects")}
+              onClick={() => navigate("experience")}
             >
               Explore my work <span aria-hidden="true">↓</span>
             </button>
