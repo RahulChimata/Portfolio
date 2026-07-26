@@ -274,7 +274,7 @@ export default function Home() {
         <section id="about" className="section about-section reveal">
           <div className="section-heading">
             <p className="section-number">01 / ABOUT</p>
-            <h2>Curiosity, made tangible.</h2>
+            <h2>Learn about me.</h2>
           </div>
           <div className="about-grid">
             <figure className="about-portrait">
@@ -287,17 +287,32 @@ export default function Home() {
               <figcaption>Rahul Chimata · Minneapolis, MN</figcaption>
             </figure>
             <div className="about-copy">
+              <p className="about-kicker">
+                Engineer · Researcher · Builder
+              </p>
+              <h3>
+                Drawn to difficult problems and the learning that comes with
+                solving them.
+              </h3>
               <p>
-                My work spans enterprise retrieval at IBM, AI-powered tools for
-                protection and control engineering at Mortenson, and research
-                in robotics vision and natural language processing at the
-                University of Minnesota.
+                I’m a master’s student in Robotics at the University of
+                Minnesota Twin Cities, where I’m also pursuing bachelor’s
+                degrees in Computer Science and Computer Engineering. I enjoy
+                work that asks me to learn quickly, think across disciplines,
+                and connect software with real-world systems.
               </p>
               <p>
-                Whether I’m tracing relationships across large codebases,
-                analyzing electrical schematics, or generating data for
-                underwater robots, I care about systems that are useful,
-                measurable, and easier for the next engineer to understand.
+                My experience spans industry, academic research, teaching, and
+                nonprofit leadership. I’ve built enterprise AI and engineering
+                tools at IBM and Mortenson, contributed to computer-vision and
+                NLP research at the University of Minnesota, and helped lead a
+                driver-safety initiative through EyeDA.
+              </p>
+              <p>
+                I’m currently seeking opportunities in software, robotics, or
+                machine learning—across engineering and research—where I can
+                contribute to ambitious technical work, collaborate with
+                thoughtful teams, and continue growing as an engineer.
               </p>
             </div>
           </div>
