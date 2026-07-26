@@ -42,7 +42,7 @@ test("server-renders the engineering portfolio", async () => {
   assert.match(html, /Software Developer Intern/);
   assert.match(html, /IBM/);
   assert.match(html, /Mortenson/);
-  assert.match(html, /Selected Projects/i);
+  assert.match(html, /03 \/ PROJECTS/i);
   assert.match(html, /Experience/i);
   assert.match(html, /Skills &amp; Tools/i);
   assert.match(html, /Contact/i);
@@ -76,6 +76,10 @@ test("keeps content editable and removes starter assets", async () => {
   );
   assert.match(data, /RahulChimata\/Solar-Tracking-Project/);
   assert.match(data, /shreyadixit\.org\/shreya-innovation-lab/);
+  assert.match(data, /PROGRAMMING & SYSTEMS/);
+  assert.match(data, /INFRASTRUCTURE & DELIVERY/);
+  assert.match(data, /x86-64 Assembly/);
+  assert.match(data, /OpenCV & MediaPipe/);
   assert.match(layout, /generateMetadata/);
   assert.match(favicon, /fill="#0B0C10"/);
   assert.match(favicon, /stroke="#FFFFFF"/);

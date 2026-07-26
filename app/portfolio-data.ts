@@ -194,20 +194,41 @@ export const portfolioData: PortfolioData = {
   ],
   skills: [
     {
-      category: "SOFTWARE",
-      items: ["Python", "C / C++", "Java", "JavaScript & TypeScript", "SQL"],
+      category: "PROGRAMMING & SYSTEMS",
+      items: ["Python", "C / C++", "Java", "SQL", "x86-64 Assembly"],
     },
     {
-      category: "AI & DATA",
-      items: ["RAG & Vector Search", "Computer Vision", "YOLO", "Diffusion Models", "NLP"],
+      category: "AI, VISION & DATA",
+      items: [
+        "RAG & Vector Search",
+        "Computer Vision",
+        "YOLO & Deep Learning",
+        "NLP",
+        "OpenCV & MediaPipe",
+        "Pandas",
+      ],
     },
     {
-      category: "FRAMEWORKS",
-      items: ["React", "Node.js", "FastAPI", "Flask", "Docker & Terraform"],
+      category: "ROBOTICS & HARDWARE",
+      items: [
+        "ROS 2",
+        "Embedded Systems",
+        "Microcontrollers",
+        "I²C & ADC",
+        "Verilog & Vivado",
+        "Circuits & AutoCAD",
+      ],
     },
     {
-      category: "ROBOTICS",
-      items: ["ROS 2", "Embedded Systems", "I²C & Microcontrollers", "Verilog", "Vivado"],
+      category: "INFRASTRUCTURE & DELIVERY",
+      items: [
+        "Docker & Terraform",
+        "CI/CD",
+        "Git",
+        "REST APIs & FastAPI",
+        "Agile Development",
+        "React & TypeScript",
+      ],
     },
   ],
   education: [

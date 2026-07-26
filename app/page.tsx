@@ -312,7 +312,7 @@ export default function Home() {
           <div className="section-heading section-heading--split">
             <div>
               <p className="section-number">02 / EXPERIENCE</p>
-              <h2>Learning by doing.</h2>
+              <h2>Professional background.</h2>
             </div>
             <p>
               Roles, research, and teams that shaped how I approach engineering
@@ -344,7 +344,7 @@ export default function Home() {
         <section id="projects" className="section reveal">
           <div className="section-heading section-heading--split">
             <div>
-              <p className="section-number">03 / SELECTED PROJECTS</p>
+              <p className="section-number">03 / PROJECTS</p>
               <h2>Built, tested, iterated.</h2>
             </div>
             <p>
@@ -483,7 +483,7 @@ export default function Home() {
           {data.education.map((entry) => (
             <article className="education-card" key={entry.degree}>
               <div className="education-monogram" aria-hidden="true">
-                M
+                MN
               </div>
               <div>
                 <p>{entry.period}</p>
