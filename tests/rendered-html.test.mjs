@@ -50,11 +50,12 @@ test("server-renders the engineering portfolio", async () => {
 });
 
 test("keeps content editable and removes starter assets", async () => {
-  const [page, layout, data, packageJson] = await Promise.all([
+  const [page, layout, data, packageJson, favicon] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio-data.ts", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../public/favicon.svg", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /id="home"/);
@@ -75,6 +76,8 @@ test("keeps content editable and removes starter assets", async () => {
   assert.match(data, /RahulChimata\/Solar-Tracking-Project/);
   assert.match(data, /shreyadixit\.org\/shreya-innovation-lab/);
   assert.match(layout, /generateMetadata/);
+  assert.match(favicon, /fill="#0B0C10"/);
+  assert.match(favicon, /stroke="#FFFFFF"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   await assert.rejects(
     access(new URL("SkeletonPreview.tsx", previewRoot)),
