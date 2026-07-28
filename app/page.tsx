@@ -26,13 +26,46 @@ function ProjectIcon({ icon }: { icon: ProjectEntry["icon"] }) {
         className="project-graphic project-graphic--drone"
         aria-hidden="true"
       >
-        <span className="drone-arm drone-arm--one" />
-        <span className="drone-arm drone-arm--two" />
-        <span className="drone-body" />
-        <span className="drone-rotor drone-rotor--one" />
-        <span className="drone-rotor drone-rotor--two" />
-        <span className="drone-rotor drone-rotor--three" />
-        <span className="drone-rotor drone-rotor--four" />
+        <svg className="drone-graphic" viewBox="0 0 260 180">
+          <path
+            className="drone-armature"
+            d="M112 77L53 48M148 77L207 48M108 96L51 119M152 96L209 119"
+          />
+          <g className="drone-rotor">
+            <ellipse cx="43" cy="43" rx="35" ry="10" />
+            <path d="M11 43H75M25 37L61 49" />
+            <circle cx="43" cy="43" r="5" />
+          </g>
+          <g className="drone-rotor">
+            <ellipse cx="217" cy="43" rx="35" ry="10" />
+            <path d="M185 43H249M199 37L235 49" />
+            <circle cx="217" cy="43" r="5" />
+          </g>
+          <g className="drone-rotor">
+            <ellipse cx="43" cy="122" rx="35" ry="10" />
+            <path d="M11 122H75M25 116L61 128" />
+            <circle cx="43" cy="122" r="5" />
+          </g>
+          <g className="drone-rotor">
+            <ellipse cx="217" cy="122" rx="35" ry="10" />
+            <path d="M185 122H249M199 116L235 128" />
+            <circle cx="217" cy="122" r="5" />
+          </g>
+          <path
+            className="drone-shell"
+            d="M106 68H154L170 86L154 108H106L90 86L106 68Z"
+          />
+          <path className="drone-top-panel" d="M111 75H149L157 86L149 96H111L103 86L111 75Z" />
+          <circle className="drone-status-light" cx="130" cy="85" r="5" />
+          <path className="drone-landing-gear" d="M111 106L101 137H85M149 106L159 137H175" />
+          <g className="drone-camera">
+            <path d="M120 108V119H140V108" />
+            <rect x="116" y="117" width="28" height="20" rx="6" />
+            <circle cx="130" cy="127" r="6" />
+            <circle cx="130" cy="127" r="2" />
+          </g>
+          <path className="drone-scan" d="M103 145Q130 160 157 145" />
+        </svg>
       </span>
     );
   }
@@ -44,20 +77,81 @@ function ProjectIcon({ icon }: { icon: ProjectEntry["icon"] }) {
         aria-hidden="true"
       >
         <span className="solar-sun" />
-        <span className="solar-panel" />
+        <span className="solar-beam" />
+        <span className="solar-panel">
+          <span className="solar-panel-highlight" />
+        </span>
         <span className="solar-stand" />
       </span>
     );
   }
 
-  return (
-    <span className="project-graphic project-graphic--eye" aria-hidden="true">
-      <span className="eye-outline">
-        <span className="eye-iris">
-          <span className="eye-pupil" />
+  if (icon === "eye") {
+    return (
+      <span className="project-graphic project-graphic--eye" aria-hidden="true">
+        <span className="eye-outline">
+          <span className="eye-iris">
+            <span className="eye-pupil">
+              <span className="eye-reflection" />
+            </span>
+          </span>
         </span>
+        <span className="eye-target-ring" />
+        <span className="eye-scan-line" />
       </span>
-      <span className="eye-scan-line" />
+    );
+  }
+
+  if (icon === "circuit-heart") {
+    return (
+      <span
+        className="project-graphic project-graphic--circuit-heart"
+        aria-hidden="true"
+      >
+        <svg className="circuit-heart" viewBox="0 0 240 180">
+          <path
+            className="circuit-heart-outline"
+            d="M120 158C101 139 47 108 47 66C47 42 64 27 86 27C101 27 113 35 120 47C127 35 139 27 154 27C176 27 193 42 193 66C193 108 139 139 120 158Z"
+          />
+          <path
+            className="circuit-heart-trace"
+            d="M25 91H76L91 66L108 119L126 75L140 101H215"
+          />
+          <path
+            className="circuit-heart-branch"
+            d="M76 91V49H95M140 101V132H165"
+          />
+          <circle className="circuit-heart-node" cx="25" cy="91" r="4" />
+          <circle className="circuit-heart-node" cx="95" cy="49" r="4" />
+          <circle className="circuit-heart-node" cx="165" cy="132" r="4" />
+          <circle className="circuit-heart-node" cx="215" cy="101" r="4" />
+        </svg>
+      </span>
+    );
+  }
+
+  return (
+    <span
+      className="project-graphic project-graphic--robot-arm"
+      aria-hidden="true"
+    >
+      <svg className="robot-arm-graphic" viewBox="0 0 240 180">
+        <path className="robot-arm-ground" d="M24 158H216" />
+        <rect className="robot-arm-block robot-arm-block--one" x="27" y="130" width="27" height="27" />
+        <rect className="robot-arm-block robot-arm-block--two" x="187" y="134" width="23" height="23" />
+        <rect className="robot-arm-base" x="67" y="145" width="67" height="13" rx="3" />
+        <path className="robot-arm-link" d="M91 145L105 101L153 72L177 92" />
+        <circle className="robot-arm-joint" cx="91" cy="145" r="9" />
+        <circle className="robot-arm-joint" cx="105" cy="101" r="9" />
+        <circle className="robot-arm-joint" cx="153" cy="72" r="8" />
+        <g className="robot-arm-claw">
+          <path d="M177 92L189 83M177 92L188 103" />
+          <circle cx="177" cy="92" r="6" />
+        </g>
+        <path className="robot-arm-signal" d="M74 123C56 105 56 78 75 59C94 40 122 40 141 58" />
+        <circle className="robot-arm-signal-node" cx="74" cy="123" r="3" />
+        <circle className="robot-arm-signal-node" cx="141" cy="58" r="3" />
+      </svg>
     </span>
   );
 }
@@ -337,13 +431,21 @@ export default function Home() {
               <h2>Built, tested, iterated.</h2>
             </div>
             <p>
-              Selected engineering projects spanning autonomy, embedded
-              systems, and computer vision.
+              Selected engineering projects spanning autonomy, electrical
+              engineering, embedded systems, and computer vision.
             </p>
           </div>
           <div className="project-grid">
-            {data.projects.map((project) => (
-              <article className="project-card" key={project.id}>
+            {data.projects.map((project, index) => (
+              <article
+                className={`project-card ${
+                  data.projects.length % 2 === 1 &&
+                  index === data.projects.length - 1
+                    ? "project-card--wide"
+                    : ""
+                }`}
+                key={project.id}
+              >
                 <span className="project-number">{project.number}</span>
                 <span className="project-category">{project.category}</span>
                 <ProjectIcon icon={project.icon} />

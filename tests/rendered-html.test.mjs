@@ -64,12 +64,17 @@ test("keeps the animated portfolio lean and removes starter infrastructure", asy
   assert.match(data, /icon: "drone"/);
   assert.match(data, /icon: "solar"/);
   assert.match(data, /icon: "eye"/);
+  assert.match(data, /icon: "circuit-heart"/);
+  assert.match(data, /icon: "robot-arm"/);
   assert.match(
     data,
     /hub\.docker\.com\/r\/rahulchimata\/drone_sim_final_project/,
   );
   assert.match(data, /RahulChimata\/Solar-Tracking-Project/);
   assert.match(data, /shreyadixit\.org\/shreya-innovation-lab/);
+  assert.match(data, /RahulChimata\/Electrocardiogram-Design-Project/);
+  assert.match(data, /RahulChimata\/TOST/);
+  assert.match(data, /Threshold-based Object Sorting Technique/);
   assert.match(data, /PROGRAMMING & SYSTEMS/);
   assert.match(data, /INFRASTRUCTURE & DELIVERY/);
   assert.match(data, /x86-64 Assembly/);

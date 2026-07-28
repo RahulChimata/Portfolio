@@ -9,7 +9,7 @@ export type ExperienceEntry = {
 export type ProjectEntry = {
   id: string;
   number: string;
-  icon: "drone" | "solar" | "eye";
+  icon: "drone" | "solar" | "eye" | "circuit-heart" | "robot-arm";
   title: string;
   category: string;
   summary: string;
@@ -167,6 +167,51 @@ export const portfolioData: PortfolioData = {
         {
           label: "Project site",
           url: "https://shreyadixit.org/shreya-innovation-lab/",
+        },
+      ],
+    },
+    {
+      id: "electrocardiogram",
+      number: "04",
+      icon: "circuit-heart",
+      title: "Electrocardiogram Design",
+      category: "ELECTRICAL ENGINEERING · PCB DESIGN",
+      summary:
+        "A custom electrocardiogram system built from schematic and PCB design through fabrication, embedded programming, and signal digitization.",
+      technologies: [
+        "Custom PCB",
+        "Circuit Design",
+        "PCB Fabrication",
+        "Microcontrollers",
+        "ADC",
+        "Embedded C",
+      ],
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/RahulChimata/Electrocardiogram-Design-Project",
+        },
+      ],
+    },
+    {
+      id: "tost",
+      number: "05",
+      icon: "robot-arm",
+      title: "TOST",
+      category: "ROBOTICS · ROS 2 · SIMULATION",
+      summary:
+        "Threshold-based Object Sorting Technique—a ROS 2 and Gazebo simulation that controls a robotic arm to sort colored blocks.",
+      technologies: [
+        "ROS 2",
+        "Gazebo",
+        "Robotic Arms",
+        "Robot Simulation",
+        "Object Sorting",
+      ],
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/RahulChimata/TOST",
         },
       ],
     },
